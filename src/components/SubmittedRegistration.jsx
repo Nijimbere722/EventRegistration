@@ -1,25 +1,41 @@
-import react from "react";
-function SubmittedRegistration() {
+import React from "react"
+import { useNavigate } from "react-router-dom"
 
-  const data = JSON.parse(localStorage.getItem("registration"));
+function SubmittedRegistration({ registrationData, setRegistrationData }) {
+
+  const navigate = useNavigate()
+
+  const cancelRegistration = () => {
+    localStorage.removeItem("registration")
+    setRegistrationData(null)
+    navigate("/")
+  }
+
+  if (!registrationData) {
+    return <p>No registration found</p>
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <div className="bg-white p-8 rounded shadow">
+    <div>
 
-        <h2 className="text-2xl font-bold mb-4">
-          You Already Registered
-        </h2>
+      <h2>You Already Registered</h2>
 
-        <p><strong>Name:</strong> {data.name}</p>
-        <p><strong>Email:</strong> {data.email}</p>
-        <p><strong>Ticket:</strong> {data.ticket}</p>
+      <p>Name: {registrationData.name}</p>
+      <p>Email: {registrationData.email}</p>
+      <p>Ticket: {registrationData.ticket}</p>
 
-      </div>
+      <button onClick={() => navigate("/register")}>
+        Edit Registration
+      </button>
+
+      <button onClick={cancelRegistration}>
+        Cancel Registration
+      </button>
 
     </div>
-  );
+
+  )
 }
 
-export default SubmittedRegistration;
+export default SubmittedRegistration

@@ -1,21 +1,22 @@
-import react from " react ";
+import React from "react"
+
 function Confirmation() {
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-100">
 
-      <div className="bg-white p-8 rounded shadow text-center">
+    <div>
 
-        <h1 className="text-3xl font-bold mb-4">
-          Registration Successful 🎉
-        </h1>
+      <h2>Registration Successful</h2>
 
-        <p>Your seat at the Tech Innovation Conference has been reserved.</p>
+      <p>
+        Thank you for registering for the Tech Innovation Conference.
+      </p>
 
-      </div>
+      <p>Your seat has been reserved.</p>
 
     </div>
-  );
+
+  )
 }
 
-export default Confirmation;
+export default Confirmation

@@ -1,45 +1,37 @@
-import react from " react";
-import { useNavigate, useEffect } from "react-router-dom";
+import React from "react"
+import { useNavigate } from "react-router-dom"
 
 function EventInfo() {
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const saved = localStorage.getItem("registration");
-
-    if (saved) {
-      navigate("/submitted");
-    }
-  }, []);
+  const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div>
 
-      <div className="bg-white p-8 rounded shadow text-center max-w-lg">
+      <h1>Tech Innovation Conference 2026</h1>
 
-        <h1 className="text-3xl font-bold mb-4">
-          Tech Innovation Conference
-        </h1>
+      <p>Date: March 25-26, 2026</p>
+      <p>Location: Kigali Convention Center</p>
 
-        <p className="mb-2">📅 July 20, 2026</p>
-        <p className="mb-4">📍 Kigali Convention Center</p>
+      <p>
+        Join developers, designers, entrepreneurs and tech enthusiasts
+        to explore the latest innovations in technology.
+      </p>
 
-        <p className="text-gray-600 mb-6">
-          Join developers, designers and tech enthusiasts for a day of innovation and learning.
-        </p>
+      <h3>Key Topics</h3>
 
-        <button
-          onClick={() => navigate("/register")}
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-        >
-          Register
-        </button>
+      <ul>
+        <li>Artificial Intelligence</li>
+        <li>Blockchain</li>
+        <li>Startup Innovation</li>
+      </ul>
 
-      </div>
+      <button onClick={() => navigate("/register")}>
+        Register Now
+      </button>
 
     </div>
-  );
+  )
 }
 
-export default EventInfo;
+export default EventInfo

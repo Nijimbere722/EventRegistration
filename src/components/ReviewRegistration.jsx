@@ -1,54 +1,39 @@
-import react from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React from "react"
+import { useNavigate } from "react-router-dom"
 
-function ReviewRegistration() {
+function ReviewRegistration({ registrationData }) {
 
-  const location = useLocation();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const data = location.state;
+  if (!registrationData) {
+    return <p>No data</p>
+  }
 
-  const confirmRegistration = () => {
-    localStorage.setItem("registration", JSON.stringify(data));
-    navigate("/confirmation");
-  };
+  const confirm = () => {
+    localStorage.setItem("registration", JSON.stringify(registrationData))
+    navigate("/confirmation")
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <div className="bg-white p-8 rounded shadow max-w-lg">
+    <div>
 
-        <h2 className="text-2xl font-bold mb-4">
-          Review Your Registration
-        </h2>
+      <h2>Review Your Registration</h2>
 
-        <p><strong>Name:</strong> {data.name}</p>
-        <p><strong>Email:</strong> {data.email}</p>
-        <p><strong>Phone:</strong> {data.phone}</p>
-        <p><strong>Ticket:</strong> {data.ticket}</p>
+      <p>Name: {registrationData.name}</p>
+      <p>Email: {registrationData.email}</p>
+      <p>Phone: {registrationData.phone}</p>
+      <p>Organization: {registrationData.organization}</p>
+      <p>Ticket: {registrationData.ticket}</p>
 
-        <div className="flex justify-between mt-6">
+      <button onClick={() => navigate("/register")}>Edit</button>
 
-          <button
-            onClick={() => navigate("/register")}
-            className="bg-gray-400 text-white px-4 py-2 rounded"
-          >
-            Edit
-          </button>
-
-          <button
-            onClick={confirmRegistration}
-            className="bg-green-600 text-white px-4 py-2 rounded"
-          >
-            Confirm
-          </button>
-
-        </div>
-
-      </div>
+      <button onClick={confirm}>
+        Confirm Registration
+      </button>
 
     </div>
-  );
+  )
 }
 
-export default ReviewRegistration;
+export default ReviewRegistration
