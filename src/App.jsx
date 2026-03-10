@@ -1,71 +1,80 @@
-import React, { useState, useEffect } from "react"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import EventInfo from "./components/EventInfo"
-import RegistrationForm from "./components/RegistrationForm"
-import ReviewRegistration from "./components/ReviewRegistration"
-import Confirmation from "./components/Confirmation"
-import SubmittedRegistration from "./components/SubmittedRegistration"
+import EventInfo from "./components/EventInfo";
+import RegistrationForm from "./components/RegistrationForm";
+import ReviewRegistration from "./components/ReviewRegistration";
+import Confirmation from "./components/Confirmation";
+import SubmittedRegistration from "./components/SubmittedRegistration";
 
 function App() {
-
-  const [registrationData, setRegistrationData] = useState(null)
-
-  useEffect(() => {
-    const saved = localStorage.getItem("registration")
-    if (saved) {
-      setRegistrationData(JSON.parse(saved))
-    }
-  }, [])
-
   return (
     <BrowserRouter>
 
-      <Routes>
+      {/* Navbar */}
+      <nav className="bg-blue-600 text-white p-4 shadow-md">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <h1 className="text-xl font-bold">Tech Conference</h1>
 
-        <Route
-          path="/"
-          element={
-            registrationData
-              ? <Navigate to="/submitted" />
-              : <EventInfo />
-          }
-        />
+          <div className="space-x-4">
+            <Link
+              to="/"
+              className="hover:text-gray-200 transition"
+            >
+              Home
+            </Link>
 
-        <Route
-          path="/register"
-          element={<RegistrationForm setRegistrationData={setRegistrationData} />}
-        />
+            <Link
+              to="/register"
+              className="hover:text-gray-200 transition"
+            >
+              Register
+            </Link>
 
-        <Route
-          path="/review"
-          element={
-            <ReviewRegistration
-              registrationData={registrationData}
-              setRegistrationData={setRegistrationData}
+            <Link
+              to="/submitted"
+              className="hover:text-gray-200 transition"
+            >
+              My Registration
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Page Content */}
+      <main className="min-h-screen bg-gray-100 p-6">
+        <div className="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md">
+
+          <Routes>
+
+            <Route path="/" element={<EventInfo />} />
+
+            <Route
+              path="/register"
+              element={<RegistrationForm />}
             />
-          }
-        />
 
-        <Route
-          path="/confirmation"
-          element={<Confirmation />}
-        />
-
-        <Route
-          path="/submitted"
-          element={
-            <SubmittedRegistration
-              registrationData={registrationData}
-              setRegistrationData={setRegistrationData}
+            <Route
+              path="/review"
+              element={<ReviewRegistration />}
             />
-          }
-        />
 
-      </Routes>
+            <Route
+              path="/confirmation"
+              element={<Confirmation />}
+            />
+
+            <Route
+              path="/submitted"
+              element={<SubmittedRegistration />}
+            />
+
+          </Routes>
+
+        </div>
+      </main>
 
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
