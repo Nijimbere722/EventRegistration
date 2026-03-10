@@ -1,57 +1,144 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function RegistrationForm({ setRegistrationData }) {
+export default function RegistrationForm() {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
     phone: "",
     organization: "",
-    ticket: "Standard",
-    diet: "",
+    ticketType: "Standard",
+    dietary: "",
     notes: ""
-  })
+  });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
-  const handleNext = () => {
-    setRegistrationData(formData)
-    navigate("/review")
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/review", { state: formData });
+  };
 
   return (
-
     <div>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Event Registration
+      </h2>
 
-      <h2>Event Registration</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
 
-      <input name="name" placeholder="Full Name" onChange={handleChange} />
-      <input name="email" placeholder="Email" onChange={handleChange} />
-      <input name="phone" placeholder="Phone Number" onChange={handleChange} />
-      <input name="organization" placeholder="Organization" onChange={handleChange} />
+        {/* Full Name */}
+        <div>
+          <label className="block text-gray-700 mb-1">
+            Full Name
+          </label>
+          <input
+            type="text"
+            name="fullName"
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+            required
+          />
+        </div>
 
-      <select name="ticket" onChange={handleChange}>
-        <option>Standard</option>
-        <option>VIP</option>
-        <option>Student</option>
-      </select>
+        {/* Email */}
+        <div>
+          <label className="block text-gray-700 mb-1">
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+            required
+          />
+        </div>
 
-      <input name="diet" placeholder="Dietary Requirements" onChange={handleChange} />
+        {/* Phone */}
+        <div>
+          <label className="block text-gray-700 mb-1">
+            Phone Number
+          </label>
+          <input
+            type="text"
+            name="phone"
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
 
-      <textarea name="notes" placeholder="Additional Notes" onChange={handleChange} />
+        {/* Organization */}
+        <div>
+          <label className="block text-gray-700 mb-1">
+            Organization
+          </label>
+          <input
+            type="text"
+            name="organization"
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
 
-      <button onClick={handleNext}>Next</button>
+        {/* Ticket Type */}
+        <div>
+          <label className="block text-gray-700 mb-1">
+            Ticket Type
+          </label>
+          <select
+            name="ticketType"
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+          >
+            <option>Standard</option>
+            <option>VIP</option>
+            <option>Student</option>
+          </select>
+        </div>
 
+        {/* Dietary */}
+        <div>
+          <label className="block text-gray-700 mb-1">
+            Dietary Requirements
+          </label>
+          <input
+            type="text"
+            name="dietary"
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
+
+        {/* Notes */}
+        <div>
+          <label className="block text-gray-700 mb-1">
+            Additional Notes
+          </label>
+          <textarea
+            name="notes"
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
+
+        {/* Button */}
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+        >
+          Next
+        </button>
+
+      </form>
     </div>
-  )
+  );
 }
-
-export default RegistrationForm
