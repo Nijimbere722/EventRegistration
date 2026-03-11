@@ -1,18 +1,96 @@
-# React + Vite
+# Tech Conference Event Registration System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is a web-based event registration system built using **React with Vite**.  
+It simulates how modern event platforms allow users to view event information, register for an event, review their registration details, and confirm their participation.
 
-Currently, two official plugins are available:
+The system guides users through a structured multi-step registration process and stores the registration information in the browser's **local storage** so that the data persists even after refreshing or reopening the application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project demonstrates how to build a **multi-page application using client-side routing** and how to manage and persist user data in a frontend application.
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Features
 
-Note: This will impact Vite dev & build performances.
+The application includes the following core features:
 
-## Expanding the ESLint configuration
+- View conference information
+- Register for the event through a form
+- Review submitted registration details
+- Confirm event registration
+- Save registration data using **localStorage**
+- Detect returning users who have already registered
+- Cancel or edit registration information
+- Navigate between pages using **React Router**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Event Information
+
+**Event Name:** Tech Innovation Conference 2026  
+**Date:** March 25–26, 2026  
+**Location:** Kigali Convention Center  
+
+The conference brings together developers, designers, entrepreneurs, and technology enthusiasts to explore modern innovations such as Artificial Intelligence, Blockchain, and Startup development.
+
+---
+
+## Application Workflow
+
+The system follows a multi-step user journey:
+
+### 1. Event Information Page
+The home page introduces the conference and displays:
+- Event name
+- Date and location
+- Conference description
+- Key speakers
+- Register button
+
+Clicking the **Register** button takes the user to the registration form.
+
+---
+
+### 2. Registration Form Page
+Users fill in their registration details, including:
+
+- Full Name
+- Email Address
+- Phone Number
+- Organization / Institution
+- Ticket Type (Standard, VIP, Student)
+- Dietary Requirements
+- Additional Notes
+
+The form is connected to React state to keep track of user input.
+
+---
+
+### 3. Registration Review Page
+Before submitting their registration, users can review all the information they entered.
+
+From this page, users can:
+
+- Confirm their registration
+- Edit their information
+- Cancel their registration
+
+---
+
+### 4. Confirmation Page
+After confirming their details, the user sees a confirmation message indicating that their registration was successful.
+
+The system then saves the registration data in **local storage**.
+
+---
+
+### 5. Returning User Page
+When a user returns to the application after registering, the system checks the browser's **local storage**.
+
+If registration data already exists, the user is redirected to a page showing their submitted registration details instead of registering again.
+
+This simulates real-world event platforms that remember registered participants.
+
+
+## Author
+Monia Nijimbere
