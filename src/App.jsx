@@ -11,66 +11,49 @@ function App() {
     <BrowserRouter>
 
       {/* Navbar */}
-      <nav className="bg-blue-600 text-white p-4 shadow-md">
+      <nav className="bg-slate-900 text-white p-4 shadow-lg">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold">Tech Conference</h1>
 
-          <div className="space-x-4">
-            <Link
-              to="/"
-              className="hover:text-gray-200 transition"
-            >
+          <h1 className="text-xl font-bold">Tech Innovation Conference</h1>
+
+          <div className="space-x-6">
+            <Link to="/" className="hover:text-blue-300 transition">
               Home
             </Link>
 
-            <Link
-              to="/register"
-              className="hover:text-gray-200 transition"
-            >
+            <Link to="/register" className="hover:text-blue-300 transition">
               Register
             </Link>
 
-            <Link
-              to="/submitted"
-              className="hover:text-gray-200 transition"
-            >
+            <Link to="/submitted" className="hover:text-blue-300 transition">
               My Registration
             </Link>
           </div>
+
         </div>
       </nav>
 
       {/* Page Content */}
-      <main className="min-h-screen bg-gray-100 p-6">
-        <div className="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md">
+      <main className="min-h-screen bg-slate-950 p-8">
+
+        <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl p-8">
 
           <Routes>
 
             <Route path="/" element={<EventInfo />} />
 
-            <Route
-              path="/register"
-              element={<RegistrationForm />}
-            />
+            <Route path="/register" element={<RegistrationForm />} />
 
-            <Route
-              path="/review"
-              element={<ReviewRegistration />}
-            />
+            <Route path="/review" element={<ReviewRegistration />} />
 
-            <Route
-              path="/confirmation"
-              element={<Confirmation />}
-            />
+            <Route path="/confirmation" element={<Confirmation />} />
 
-            <Route
-              path="/submitted"
-              element={<SubmittedRegistration />}
-            />
+            <Route path="/submitted" element={<SubmittedRegistration />} />
 
           </Routes>
 
         </div>
+
       </main>
 
     </BrowserRouter>
